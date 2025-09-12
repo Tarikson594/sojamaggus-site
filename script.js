@@ -1,17 +1,16 @@
 const img = document.getElementById("sojamaggus");
 const bubble = document.getElementById("speech-bubble");
 const userInput = document.getElementById("userInput");
-const talkButton = document.getElementById("talkButton");
 
-// Erweiterte Antwortliste (50+ Sätze)
+// Kategorien mit Antworten (50+ Sätze verteilt)
 const responses = {
   fleisch: [
     "Mehr Tofu, weniger Leberkäs!",
     "Ein Braten aus Seitan ist auch ein Festschmaus.",
     "Fleisch ist für mich nur Pflanzeneiweiß mit Umweg.",
-    "Vegane Würstchen retten die Welt!",
-    "Schnitzel? Lieber aus Linsen!",
-    "Ein Burger aus Bohnen ist besser als jedes Steak.",
+    "Fleisch ist nur Gemüse, das den falschen Weg gegangen ist.",
+    "Ein Schnitzel? Lieber ein Sojaschnitzel!"
+     "Ein Burger aus Bohnen ist besser als jedes Steak.",
     "Keine Angst vor Tempeh – das schmeckt sogar Söder!",
     "Fleischersatz macht Bayern grüner.",
     "Linsen statt Leberkäs – gesünder für alle!",
@@ -30,7 +29,7 @@ const responses = {
     "Ein Windrad pro Haushalt – meine Vision!"
   ],
   bayern: [
-    "Weißwurst mit Sojamilch – auch eine Tradition!",
+     "Weißwurst mit Sojamilch – auch eine Tradition!",
     "Bayern braucht mehr Brezn aus Vollkorn.",
     "Servus mit 🌱, nicht mit 🥩.",
     "Grünes Bayern für alle!",
@@ -41,84 +40,134 @@ const responses = {
     "Tradition trifft Nachhaltigkeit – das ist Bayern!",
     "Bayern kann grün und modern sein!"
   ],
+  klimawandel: [
+    "Das Klima wartet nicht auf Koalitionsverträge.",
+    "Klimaschutz ist kein Schmarrn!",
+    "Ein Grad mehr ist einer zu viel.",
+    "Lieber Eis am Stiel als Eis am Pol, das wegschmilzt!",
+    "CO2 ist der wahre Bierzelt-Sprenger."
+  ],
+  parteien: [
+    "Parteien reden viel, ich rede Tofu.",
+    "Politik ohne Klima ist wie Brezn ohne Salz.",
+    "Die CSU schwört auf Schweinsbraten – ich auf Sojaschnetzel.",
+    "Parteien drehen sich – fast wie Windräder, nur ohne Strom.",
+    "Parteien sind wie Weißwürste: nach 12 Uhr schwer verdaulich."
+  ],
+  frauen: [
+    "Frauen an die Macht – Männer an den Herd (mit Tofu).",
+    "Gleichberechtigung ist kein Beilagensalat.",
+    "Starke Frauen, starke Klimapolitik.",
+    "Frauenpower rettet die Welt, Männer reden drüber.",
+    "Ohne Frauen kein Fortschritt – auch kein veganer!"
+  ],
+  gendern: [
+    "Liebe Bürger*innen, Tofuesser*innen und Klimaaktivist*innen!",
+    "Gendern ist wie Recycling – macht Sinn, auch wenn’s manchen nervt.",
+    "Ich gendere sogar meinen Sojajoghurt.",
+    "Sprache formt Bewusstsein – auch im Bierzelt.",
+    "Gendern ist der Veggie-Day der Sprache."
+  ],
+  diegruenen: [
+    "Die Grünen sind wie Bio-Märkte: manchmal teuer, aber notwendig.",
+    "Grüne Politik ist der Dünger fürs Klima.",
+    "Die Grünen liefern Windräder, Söder liefert Weißwürste.",
+    "Die Grünen sind die Brezn – Söder der Leberkäs.",
+    "Mit den Grünen wird die Zukunft veganisiert!"
+  ],
   default: [
     "Ich bin der Tofu unter den Politikern!",
     "Mehr Bio, weniger Blabla!",
     "Klimaschutz ist kein Schmarrn!",
-    "Jeder sollte mal einen Pflanzenburger probieren!",
+    "Vegane Weißwürste für alle!",
+    "Soja ist das neue Bier."
+     "Jeder sollte mal einen Pflanzenburger probieren!",
     "Grün ist das neue Schwarz in Bayern!",
     "Rettet die Kühe – esst mehr Linsen!",
     "Meine Meinung weht wie ein Windrad!",
     "Erneuerbare Energien sind sexy!",
-    "Blubb blubb, aber bitte nachhaltig!",
     "Vegane Politik rockt!",
     "Mehr Fahrradwege für alle!",
-    "Solaranlagen statt Hotspots!",
-    "Bäume pflanzen, nicht Parolen!",
     "Tofu ist das neue Weißbier!",
-    "Nachhaltigkeit ist kein Trend, sondern Pflicht!",
-    "Energie sparen macht frei – wie Bayern!",
-    "Wer Linsen isst, liebt die Umwelt!",
-    "Mülltrennung ist mein Lieblingssport!",
+    "Nachhaltigkeit ist Pflicht, kein Trend!",
     "Wind, Sonne, Tofu – meine drei Säulen!",
-    "Grüne Politik schmeckt wie ein Brezn-Snack!",
-    "Bio ist cool – probier es aus!",
-    "Mein Herz schlägt für Pflanzen!",
-    "Klimaschutz kann sexy sein!",
-    "Weniger CO₂, mehr Lebensfreude!",
-    "Bayern wird veganfreundlich!",
-    "Ein Windrad pro Dorf, bitte!",
-    "Seitan statt Söders Sprüche!",
-    "Mehr Pflanzen, weniger Politiker-Drama!",
-    "Nachhaltigkeit ist keine Hexerei!",
-    "Vegane Weißwürste? Na klar!",
-    "Blubb blubb für erneuerbare Energien!",
-    "Fleischlos glücklich durch Bayern!",
-    "Klimafreundlich leben rockt!",
-    "Sonnenenergie statt Sorgenenergie!",
-    "Mehr Gemüse, weniger Politikstress!",
-    "Ich liebe grüne Innovation!",
-    "Bayern wird bio – und alle applaudieren!",
-    "Windräder über Alles!",
-    "Tempeh über Tofu – nur ein Scherz!",
-    "Nachhaltig ist trendy!",
-    "Klimaschutz ist mein Lieblingssport!",
-    "Blubb blubb, die Welt wird besser!",
-    "Grün ist das neue Weiß!",
-    "Jeder kann Tofu essen, keiner muss weinen!",
-    "Mein Gemüse rockt Bayern!",
-    "Erneuerbare Energie ist mein Herzschlag!",
-    "Söder würde Tofu lieben!",
-    "Bayern, aber vegan!",
-    "Mehr Pflanzenpower, weniger Politik-Power!",
-    "Blubb blubb – für eine bessere Zukunft!"
+    "Bäume pflanzen, nicht Parolen!",
+    "Fleischlos glücklich durch Bayern!"
   ]
 };
 
-// Keywords für Kategorien
-const keywords = {
-  fleisch: ["fleisch", "burger", "schnitzel", "tofu", "tempeh", "vegan", "seitan", "würstchen", "braten", "kühe", "linsen"],
-  windräder: ["windräder", "windkraft", "energie", "rotor", "wind", "strom", "erneuerbar", "solar", "kraftwerk"],
-  bayern: ["bayern", "weißwurst", "brezn", "alpen", "münchen", "politik", "land", "tradition", "sojamilch", "dach"]
+// Easter Egg Antworten (haben Vorrang)
+const easterEggs = {
+  söder: [
+    "Söder? Der isst bestimmt heimlich Tofu!",
+    "Söder wechselt seine Meinung schneller als ich meinen Soja-Joghurt.",
+    "Söder im Dirndl wäre auch ein Klimaretter.",
+    "Söder und Soja – klingt fast gleich, schmeckt aber anders!"
+  ],
+  csu: [
+    "Die CSU ist wie ein altes Rezept: viel Fleisch, wenig Zukunft.",
+    "CSU heißt: Currywurst statt Klimaschutz.",
+    "Die CSU hat Angst vor Windrädern – ich hab nur Angst vor leerem Tofu-Regal!"
+  ],
+  afd: [
+    "AfD? Das ist wie Schweinsbraten ohne Senf – überflüssig.",
+    "Die AfD glaubt nicht an den Klimawandel – ich glaub nicht an Schweinshaxe."
+  ]
 };
 
+// Keywords für Zuordnung
+const keywords = {
+  fleisch: ["fleisch", "schnitzel", "braten", "wurst"],
+  windräder: ["windrad", "windräder", "windkraft"],
+  bayern: ["bayern", "münchen", "lederhose", "weißwurst"],
+  klimawandel: ["klima", "erwärmung", "co2", "klimawandel"],
+  parteien: ["partei", "parteien", "spd", "fdp", "linke"],
+  frauen: ["frau", "frauen", "mädchen"],
+  gendern: ["gender", "gendern", "genderstern", "innen"],
+  diegruenen: ["grüne", "die grünen", "baerbock", "habeck"]
+};
+
+// Hauptfunktion
 function talk() {
   let input = userInput.value.trim().toLowerCase();
-  let pool = responses.default;
 
-  // Kategorie basierend auf Keywords auswählen
-  outer: for (let category in keywords) {
+  // Easter Eggs prüfen
+  for (let egg in easterEggs) {
+    if (input.includes(egg)) {
+      const responses = easterEggs[egg];
+      bubble.textContent = responses[Math.floor(Math.random() * responses.length)];
+      animateMouth();
+      userInput.value = '';
+      return;
+    }
+  }
+
+  // Normale Kategorien
+  let matchedPools = [];
+  for (let category in keywords) {
     for (let kw of keywords[category]) {
       if (input.includes(kw)) {
-        pool = responses[category];
-        break outer;
+        matchedPools.push(...responses[category]);
+        break;
       }
     }
   }
 
-  const answer = pool[Math.floor(Math.random() * pool.length)];
+  // Falls nichts passt → default
+  if (matchedPools.length === 0) {
+    matchedPools = responses.default;
+  }
+
+  // Zufällige Antwort aus Pool
+  const answer = matchedPools[Math.floor(Math.random() * matchedPools.length)];
   bubble.textContent = answer;
 
+  animateMouth();
+  userInput.value = '';
+}
+
+// Animation fürs Bild
+function animateMouth() {
   let count = 0;
   const interval = setInterval(() => {
     img.src = (count % 2 === 0) ? "sojamaggus_open.PNG" : "sojamaggus_closed.PNG";
@@ -128,8 +177,4 @@ function talk() {
       img.src = "sojamaggus_closed.PNG";
     }
   }, 300);
-
-  userInput.value = '';
 }
-
-talkButton.addEventListener('click', talk);
