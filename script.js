@@ -9,13 +9,13 @@ function speak(text) {
     
     let open = true;
     const interval = setInterval(() => {
-        sojamaggus.src = open ? 'images/sojamaggus_open.PNG' : 'images/sojamaggus_closed.PNG';
+        sojamaggus.src = open ? 'sojamaggus_open.PNG' : 'sojamaggus_closed.PNG';
         open = !open;
     }, 300);
 
     setTimeout(() => {
         clearInterval(interval);
-        sojamaggus.src = 'images/sojamaggus_closed.PNG';
+        sojamaggus.src = 'sojamaggus_closed.PNG';
     }, 2000);
 }
 
@@ -36,3 +36,4 @@ function generateResponse(message) {
     if (lower.includes('wie geht')) return 'Mir geht es super, danke der Nachfrage!';
     return 'Blubb blubb!';
 }
+
