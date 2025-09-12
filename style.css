@@ -11,33 +11,31 @@ h1 {
 }
 
 #sojamaggus-wrapper {
-  position: relative;
   display: inline-block;
+  text-align: center;
 }
 
 #sojamaggus {
   width: 250px;
-  margin: 20px;
+  display: block;
+  margin: 0 auto 20px auto;
 }
 
 #hint-bubbles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* wichtig: Bild bleibt anklickbar */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .bubble {
-  position: absolute;
   background: #8bc34a;
   color: white;
   padding: 10px 15px;
   border-radius: 50%;
-  font-size: 14px;
   cursor: pointer;
-  pointer-events: auto; /* wieder anklickbar machen */
+  font-size: 14px;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -45,6 +43,7 @@ h1 {
   transform: scale(1.1);
   background: #689f38;
 }
+
 
 #speech-bubble {
   margin: 20px auto;
@@ -79,3 +78,4 @@ button {
 button:hover {
   background: #689f38;
 }
+
