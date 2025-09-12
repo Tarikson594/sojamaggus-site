@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Bilder-Test</title>
+</head>
+<body>
+  <h1>Bilder-Test</h1>
+
+  <p>Closed-Mund Bild:</p>
+  <img src="sojamaggus_closed.png" alt="Sojamaggus Closed" width="200">
+
+  <p>Open-Mund Bild:</p>
+  <img src="sojamaggus_open.png" alt="Sojamaggus Open" width="200">
+
+  <script>
+    const images = ["sojamaggus_closed.png", "sojamaggus_open.png"];
+    images.forEach(img => {
+      const image = new Image();
+      image.src = img;
+      image.onload = () => console.log(`${img} gefunden und geladen!`);
+      image.onerror = () => console.error(`${img} NICHT gefunden!`);
+    });
+  </script>
+</body>
+</html>
