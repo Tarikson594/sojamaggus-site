@@ -177,12 +177,32 @@ function animateMouth() {
   }, 300);
 }
 
-// Klick auf Bubbles
+// Bubbles rund um das Bild verteilen
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".bubble").forEach(b => {
+  const wrapper = document.getElementById("hint-bubbles");
+  const bubbles = wrapper.querySelectorAll(".bubble");
+  const radius = 150; // Abstand vom Bild (kann angepasst werden)
+
+  const centerX = wrapper.clientWidth / 2;
+  const centerY = wrapper.clientHeight / 2;
+
+  const total = bubbles.length;
+  bubbles.forEach((bubble, i) => {
+    const angle = (i / total) * (2 * Math.PI);
+    const x = centerX + radius * Math.cos(angle);
+    const y = centerY + radius * Math.sin(angle);
+    bubble.style.position = "absolute";
+    bubble.style.left = `${x}px`;
+    bubble.style.top = `${y}px`;
+  });
+
+  // Klick-Event auf die Bubbles
+  bubbles.forEach(b => {
     b.addEventListener("click", () => {
       userInput.value = b.textContent.toLowerCase();
       talk();
     });
   });
 });
+
+
