@@ -181,7 +181,7 @@ function animateMouth() {
 document.addEventListener("DOMContentLoaded", () => {
   const wrapper = document.getElementById("hint-bubbles");
   const bubbles = wrapper.querySelectorAll(".bubble");
-  const radius = 120; // Abstand vom Bild
+  const radius = 180; // Abstand vom Bild, größer für Überlappungsvermeidung
 
   const centerX = wrapper.clientWidth / 2;
   const centerY = wrapper.clientHeight / 2;
@@ -189,11 +189,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const total = bubbles.length;
   bubbles.forEach((b, i) => {
     const angle = (i / total) * (2 * Math.PI);
-    const x = centerX + radius * Math.cos(angle) - b.offsetWidth/2;
-    const y = centerY + radius * Math.sin(angle) - b.offsetHeight/2;
-    b.style.position = "absolute";
+    const x = centerX + radius * Math.cos(angle) - b.offsetWidth / 2;
+    const y = centerY + radius * Math.sin(angle) - b.offsetHeight / 2;
     b.style.left = `${x}px`;
     b.style.top = `${y}px`;
+    b.style.position = "absolute";
 
     // Klick-Event
     b.addEventListener("click", () => {
