@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sojamaggus</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Sojamaggus spricht</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Sojamaggus</h1>
-    </header>
+  <h1>Sojamaggus sagt...</h1>
 
-    <main>
-        <section id="hero">
-            <div id="sojamaggus-container">
-                <img src="sojamaggus_closed.PNG" alt="Sojamaggus" id="sojamaggus">
-                <div id="speech-bubble">...</div>
-            </div>
-            
-            <form id="contact-form">
-                <input type="text" id="message" name="message" placeholder="Sag was">
-                <button type="submit">Senden</button>
-            </form>
-        </section>
-    </main>
+  <img id="sojamaggus" src="sojamaggus_closed.PNG" alt="Sojamaggus">
+  <div id="speech-bubble">Tippe ein Thema ein und klick auf "Sag was!"</div>
 
-    <script src="script.js"></script>
+  <div id="input-area">
+    <input type="text" id="userInput" placeholder="z.B. Fleisch, Windräder...">
+    <button id="talkButton">Sag was!</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
