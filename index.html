@@ -6,12 +6,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <h1>Sojamaggus sagt...</h1>
 
   <!-- Figur mit Bubbles -->
   <div id="sojamaggus-wrapper">
     <img id="sojamaggus" src="sojamaggus_closed.png" alt="Sojamaggus">
 
+    <!-- Themen-Bubbles -->
     <div id="hint-bubbles">
       <span class="bubble">Fleisch</span>
       <span class="bubble">Windräder</span>
@@ -28,14 +30,14 @@
   </div>
 
   <!-- Sprechblase -->
-  <div id="speech-bubble">Tippe ein Thema ein und klick auf "Sag was!"</div>
+  <div id="speech-bubble">Tippe ein Thema ein oder klick auf eine Bubble!</div>
 
   <!-- Eingabefeld -->
   <div id="input-area">
     <input type="text" id="userInput" placeholder="z.B. Fleisch, Windräder...">
     <button onclick="talk()">Sag was!</button>
   </div>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
-
