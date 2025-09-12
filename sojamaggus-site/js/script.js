@@ -1,47 +1,44 @@
-const img = document.getElementById("sojamaggus");
-const bubble = document.getElementById("speech-bubble");
-const userInput = document.getElementById("userInput");
-const talkBtn = document.getElementById("talkBtn");
+const sojamaggus = document.getElementById('sojamaggus');
+const speechBubble = document.getElementById('speech-bubble');
+const form = document.getElementById('contact-form');
+const messageInput = document.getElementById('message');
 
-const responses = {
-  fleisch: [
-    "Mehr Tofu, weniger Leberkäs!",
-    "Ein Braten aus Seitan ist auch ein Festschmaus.",
-    "Fleisch ist für mich nur Pflanzeneiweiß mit Umweg."
-  ],
-  windräder: [
-    "Drehen sich schneller als Söders Meinung!",
-    "Mehr Windräder, weniger heiße Luft.",
-    "Windkraft ist die echte bayerische Blasmusik."
-  ],
-  bayern: [
-    "Weißwurst mit Sojamilch – auch eine Tradition!",
-    "Bayern braucht mehr Brezn aus Vollkorn.",
-    "Servus mit 🌱, nicht mit 🥩."
-  ],
-  default: [
-    "Ich bin der Tofu unter den Politikern!",
-    "Mehr Bio, weniger Blabla!",
-    "Klimaschutz ist kein Schmarrn!"
-  ]
-};
+// Funktion, um die Figur sprechen zu lassen
+function speak(text) {
+    speechBubble.textContent = text;
+    speechBubble.style.display = 'block';
+    
+    let open = true;
+    const interval = setInterval(() => {
+        sojamaggus.src = open ? 'images/sojamaggus_open.PNG' : 'images/sojamaggus_closed.PNG';
+        open = !open;
+    }, 300); // Mundwechsel alle 300ms
 
-talkBtn.addEventListener("click", talk);
+    // Nach 2 Sekunden stoppen
+    setTimeout(() => {
+        clearInterval(interval);
+        sojamaggus.src = 'images/sojamaggus_closed.PNG';
+    }, 2000);
+}
 
-function talk() {
-  let input = userInput.value.trim().toLowerCase();
-  let pool = responses.default;
+// Formular-Submit
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const userMessage = messageInput.value.trim();
+    if (!userMessage) return;
 
-  for (let key in responses) {
-    if (input.includes(key)) pool = responses[key];
-  }
+    // Beispiel: Figur „antwortet“ automatisch (hier kann man API oder Logik einsetzen)
+    const response = generateResponse(userMessage);
+    speak(response);
 
-  bubble.textContent = pool[Math.floor(Math.random() * pool.length)];
+    messageInput.value = '';
+});
 
-  let count = 0;
-  const interval = setInterval(() => {
-    img.src = (count % 2 === 0) ? "images/sojamaggus_open.png" : "images/sojamaggus_closed.png";
-    count++;
-    if (count > 6) clearInterval(interval);
-  }, 200);
+// Einfache Logik für Antworten
+function generateResponse(message) {
+    // Hier einfache Beispiele, kann beliebig erweitert werden
+    const lower = message.toLowerCase();
+    if (lower.includes('hallo')) return 'Hallo! Schön dich zu sehen!';
+    if (lower.includes('wie geht')) return 'Mir geht es super, danke der Nachfrage!';
+    return 'Blubb blubb!'; // Default-Antwort
 }
