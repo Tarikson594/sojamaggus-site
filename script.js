@@ -168,4 +168,37 @@ function talk() {
 function animateMouth() {
   let count = 0;
   const interval = setInterval(() => {
-    img.src = (count % 2 === 0) ? "sojamaggus_open.PNG" : "
+    img.src = (count % 2 === 0) ? "sojamaggus_open.PNG" : "sojamaggus_closed.PNG";
+    count++;
+    if (count > 6) {
+      clearInterval(interval);
+      img.src = "sojamaggus_closed.PNG";
+    }
+  }, 300);
+}
+
+// Bubbles rund um das Bild verteilen + Klick-Event
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.getElementById("hint-bubbles");
+  const bubbles = wrapper.querySelectorAll(".bubble");
+  const radius = 120; // Abstand vom Bild
+
+  const centerX = wrapper.clientWidth / 2;
+  const centerY = wrapper.clientHeight / 2;
+
+  const total = bubbles.length;
+  bubbles.forEach((b, i) => {
+    const angle = (i / total) * (2 * Math.PI);
+    const x = centerX + radius * Math.cos(angle) - b.offsetWidth/2;
+    const y = centerY + radius * Math.sin(angle) - b.offsetHeight/2;
+    b.style.position = "absolute";
+    b.style.left = `${x}px`;
+    b.style.top = `${y}px`;
+
+    // Klick-Event
+    b.addEventListener("click", () => {
+      userInput.value = b.textContent.toLowerCase();
+      talk();
+    });
+  });
+});
