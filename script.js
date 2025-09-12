@@ -2,15 +2,15 @@ const img = document.getElementById("sojamaggus");
 const bubble = document.getElementById("speech-bubble");
 const userInput = document.getElementById("userInput");
 
-// Kategorien mit Antworten (50+ Sätze verteilt)
+// Kategorien mit Antworten (inkl. deiner Quotes)
 const responses = {
   fleisch: [
     "Mehr Tofu, weniger Leberkäs!",
     "Ein Braten aus Seitan ist auch ein Festschmaus.",
     "Fleisch ist für mich nur Pflanzeneiweiß mit Umweg.",
     "Fleisch ist nur Gemüse, das den falschen Weg gegangen ist.",
-    "Ein Schnitzel? Lieber ein Sojaschnitzel!"
-     "Ein Burger aus Bohnen ist besser als jedes Steak.",
+    "Ein Schnitzel? Lieber ein Sojaschnitzel!",
+    "Ein Burger aus Bohnen ist besser als jedes Steak.",
     "Keine Angst vor Tempeh – das schmeckt sogar Söder!",
     "Fleischersatz macht Bayern grüner.",
     "Linsen statt Leberkäs – gesünder für alle!",
@@ -29,7 +29,7 @@ const responses = {
     "Ein Windrad pro Haushalt – meine Vision!"
   ],
   bayern: [
-     "Weißwurst mit Sojamilch – auch eine Tradition!",
+    "Weißwurst mit Sojamilch – auch eine Tradition!",
     "Bayern braucht mehr Brezn aus Vollkorn.",
     "Servus mit 🌱, nicht mit 🥩.",
     "Grünes Bayern für alle!",
@@ -80,8 +80,8 @@ const responses = {
     "Mehr Bio, weniger Blabla!",
     "Klimaschutz ist kein Schmarrn!",
     "Vegane Weißwürste für alle!",
-    "Soja ist das neue Bier."
-     "Jeder sollte mal einen Pflanzenburger probieren!",
+    "Soja ist das neue Bier.",
+    "Jeder sollte mal einen Pflanzenburger probieren!",
     "Grün ist das neue Schwarz in Bayern!",
     "Rettet die Kühe – esst mehr Linsen!",
     "Meine Meinung weht wie ein Windrad!",
@@ -96,7 +96,7 @@ const responses = {
   ]
 };
 
-// Easter Egg Antworten (haben Vorrang)
+// Easter Eggs
 const easterEggs = {
   söder: [
     "Söder? Der isst bestimmt heimlich Tofu!",
@@ -115,7 +115,7 @@ const easterEggs = {
   ]
 };
 
-// Keywords für Zuordnung
+// Keywords für Kategorien
 const keywords = {
   fleisch: ["fleisch", "schnitzel", "braten", "wurst"],
   windräder: ["windrad", "windräder", "windkraft"],
@@ -129,44 +129,42 @@ const keywords = {
 
 // Hauptfunktion
 function talk() {
-  let input = userInput.value.trim().toLowerCase();
+  const input = userInput.value.trim().toLowerCase();
 
   // Easter Eggs prüfen
-  for (let egg in easterEggs) {
+  for (const egg in easterEggs) {
     if (input.includes(egg)) {
-      const responses = easterEggs[egg];
-      bubble.textContent = responses[Math.floor(Math.random() * responses.length)];
+      const pool = easterEggs[egg];
+      bubble.textContent = pool[Math.floor(Math.random() * pool.length)];
       animateMouth();
       userInput.value = '';
       return;
     }
   }
 
-  // Normale Kategorien
-  let matchedPools = [];
-  for (let category in keywords) {
-    for (let kw of keywords[category]) {
+  // Normale Kategorien prüfen
+  let matched = [];
+  for (const cat in keywords) {
+    for (const kw of keywords[cat]) {
       if (input.includes(kw)) {
-        matchedPools.push(...responses[category]);
+        matched.push(...responses[cat]);
         break;
       }
     }
   }
 
-  // Falls nichts passt → default
-  if (matchedPools.length === 0) {
-    matchedPools = responses.default;
-  }
+  // Falls keine Kategorie passt → default
+  if (matched.length === 0) matched = responses.default;
 
   // Zufällige Antwort aus Pool
-  const answer = matchedPools[Math.floor(Math.random() * matchedPools.length)];
+  const answer = matched[Math.floor(Math.random() * matched.length)];
   bubble.textContent = answer;
 
   animateMouth();
   userInput.value = '';
 }
 
-// Animation fürs Bild
+// Mund-Animation
 function animateMouth() {
   let count = 0;
   const interval = setInterval(() => {
@@ -178,3 +176,13 @@ function animateMouth() {
     }
   }, 300);
 }
+
+// Klick auf Bubbles
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".bubble").forEach(b => {
+    b.addEventListener("click", () => {
+      userInput.value = b.textContent.toLowerCase();
+      talk();
+    });
+  });
+});
