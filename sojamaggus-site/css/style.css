@@ -10,7 +10,6 @@ body {
     margin-top: 50px;
 }
 
-/* Figur & Sprechblase */
 #sojamaggus-container {
     position: relative;
     display: inline-block;
@@ -37,7 +36,6 @@ body {
     word-wrap: break-word;
 }
 
-/* Formular */
 #contact-form {
     margin-top: 20px;
 }
