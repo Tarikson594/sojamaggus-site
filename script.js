@@ -95,14 +95,24 @@ const responses = {
   ]
 };
 
+// Keywords für Kategorien
+const keywords = {
+  fleisch: ["fleisch", "burger", "schnitzel", "tofu", "tempeh", "vegan", "seitan", "würstchen", "braten", "kühe", "linsen"],
+  windräder: ["windräder", "windkraft", "energie", "rotor", "wind", "strom", "erneuerbar", "solar", "kraftwerk"],
+  bayern: ["bayern", "weißwurst", "brezn", "alpen", "münchen", "politik", "land", "tradition", "sojamilch", "dach"]
+};
+
 function talk() {
   let input = userInput.value.trim().toLowerCase();
   let pool = responses.default;
 
-  for (let key in responses) {
-    if (input.includes(key)) {
-      pool = responses[key];
-      break;
+  // Kategorie basierend auf Keywords auswählen
+  outer: for (let category in keywords) {
+    for (let kw of keywords[category]) {
+      if (input.includes(kw)) {
+        pool = responses[category];
+        break outer;
+      }
     }
   }
 
