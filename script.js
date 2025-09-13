@@ -2,7 +2,7 @@ const img = document.getElementById("sojamaggus");
 const bubble = document.getElementById("speech-bubble");
 const userInput = document.getElementById("userInput");
 
-// Kategorien mit Antworten (inkl. deiner Quotes)
+// Kategorien mit Antworten
 const responses = {
   fleisch: [
     "Mehr Tofu, weniger Leberkäs!",
@@ -177,16 +177,14 @@ function animateMouth() {
   }, 300);
 }
 
-// Bubbles rund um das Bild verteilen + Klick-Event
-// Bubbles als Inspirations-Buttons + Klick-Event
+// Buttons-Events
 document.addEventListener("DOMContentLoaded", () => {
-  const bubbles = document.querySelectorAll("#hint-bubbles .bubble");
+  const bubbles = document.querySelectorAll("#hint-buttons .bubble");
 
-  bubbles.forEach(b => {
+  bubbles.forEach((b) => {
     b.addEventListener("click", () => {
       userInput.value = b.textContent.toLowerCase();
       talk();
     });
   });
 });
-
