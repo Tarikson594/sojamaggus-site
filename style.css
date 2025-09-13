@@ -2,74 +2,45 @@ body {
   font-family: Arial, sans-serif;
   background: #f5f5f5;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
+  margin: 0;
 }
 
 h1 {
   color: #2c7a2c;
-  margin-bottom: 30px;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
-/* Wrapper für das Bild */
+/* Wrapper für Bild + Bubbles */
 #sojamaggus-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto 20px auto;
+  width: 100%;
+  max-width: 500px; /* maximale Breite auf großen Bildschirmen */
 }
 
 /* Sojamaggus Bild */
 #sojamaggus {
-  width: 250px;
-  height: auto;
+  width: 100%;
+  max-width: 250px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-/* Sprechblase */
-#speech-bubble {
-  display: inline-block;
-  background: #fff;
-  border: 2px solid #2c7a2c;
-  border-radius: 12px;
-  padding: 15px;
-  margin-top: 20px;
-  min-height: 60px;
-  max-width: 400px;
-}
-
-/* Eingabefeld */
-#input-area {
-  margin-top: 20px;
-}
-
-#input-area input[type="text"] {
-  padding: 8px;
-  width: 200px;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-}
-
-#input-area button {
-  padding: 8px 16px;
-  margin-left: 8px;
-  border: none;
-  border-radius: 6px;
-  background: #2c7a2c;
-  color: white;
-  cursor: pointer;
-}
-
-#input-area button:hover {
-  background: #256a25;
-}
-
-/* Inspiration / Buttons */
+/* Buttons (unter Eingabefeld) */
 #hint-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
   margin-top: 20px;
   justify-items: center;
 }
 
+/* Bubble Buttons */
 .bubble {
   background: #8bc34a;
   color: white;
@@ -84,4 +55,100 @@ h1 {
 .bubble:hover {
   transform: scale(1.05);
   background: #689f38;
+}
+
+/* Sprechblase unter dem Bild */
+#speech-bubble {
+  display: inline-block;
+  background: #fff;
+  border: 2px solid #2c7a2c;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 20px;
+  min-height: 60px;
+  max-width: 90%;
+  word-wrap: break-word;
+  font-size: 1em;
+}
+
+/* Eingabefeld */
+#input-area {
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  width: 70%;
+  max-width: 250px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+/* Button */
+button {
+  padding: 8px 16px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 6px;
+  background: #2c7a2c;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover {
+  background: #256a25;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  #sojamaggus-wrapper {
+    max-width: 350px;
+  }
+
+  #sojamaggus {
+    max-width: 200px;
+  }
+
+  #hint-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 8px;
+  }
+
+  input[type="text"] {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3em;
+  }
+
+  #sojamaggus-wrapper {
+    max-width: 280px;
+  }
+
+  #sojamaggus {
+    max-width: 150px;
+  }
+
+  #hint-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 6px;
+  }
+
+  input[type="text"] {
+    width: 55%;
+  }
+
+  button {
+    margin-left: 4px;
+    padding: 6px 12px;
+  }
 }
