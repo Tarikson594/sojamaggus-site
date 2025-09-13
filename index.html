@@ -8,21 +8,18 @@
 <body>
   <h1>Sojamaggus sagt...</h1>
 
-  <!-- Bild von Sojamaggus -->
+  <!-- Bild + Sprechblase + Input -->
   <div id="sojamaggus-wrapper">
     <img id="sojamaggus" src="sojamaggus_closed.PNG" alt="Sojamaggus">
+    <div id="speech-bubble">Tippe ein Thema ein oder klicke auf eine Bubble!</div>
+
+    <div id="input-area">
+      <input type="text" id="userInput" placeholder="z.B. Fleisch, Windräder...">
+      <button onclick="talk()">Sag was!</button>
+    </div>
   </div>
 
-  <!-- Sprechblase unter dem Bild -->
-  <div id="speech-bubble">Tippe ein Thema ein oder klicke auf eine Idee!</div>
-
-  <!-- Eingabefeld -->
-  <div id="input-area">
-    <input type="text" id="userInput" placeholder="z.B. Fleisch, Windräder...">
-    <button>Sag was!</button>
-  </div>
-
-  <!-- Inspiration / Ideen -->
+  <!-- Inspirationsbuttons -->
   <h3>Keine Idee? Hier etwas Inspiration:</h3>
   <div id="hint-buttons">
     <div class="bubble">Fleisch</div>
