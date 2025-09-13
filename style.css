@@ -27,8 +27,8 @@ h1 {
   z-index: 2; /* Bild über den Bubbles */
 }
 
-/* Container für Bubbles */
-#hint-bubbles {
+/* Buttons (unter Eingabefeld) */
+#hint-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
@@ -91,4 +91,5 @@ button {
 button:hover {
   background: #256a25;
 }
+
 
