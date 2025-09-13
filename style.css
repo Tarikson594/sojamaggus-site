@@ -28,13 +28,15 @@ h1 {
 }
 
 /* Buttons (unter Eingabefeld) */
-#hint-buttons {
+/* Inspiration-Bubbles unterhalb */
+#inspiration-bubbles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
   margin-top: 20px;
   justify-items: center;
 }
+
 
 .bubble {
   background: #8bc34a;
@@ -91,5 +93,6 @@ button {
 button:hover {
   background: #256a25;
 }
+
 
 
