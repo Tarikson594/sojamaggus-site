@@ -125,30 +125,45 @@ button:hover {
   }
 }
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.3em;
-  }
-
+/* Tablet & Handy Anpassungen */
+@media (max-width: 768px) {
   #sojamaggus-wrapper {
-    max-width: 280px;
+    width: 100%;
+    height: auto;
   }
 
   #sojamaggus {
-    max-width: 150px;
+    width: 180px; /* kleineres Bild */
+    margin-bottom: 15px;
+  }
+
+  #speech-bubble {
+    max-width: 90%;
+    margin: 15px auto 0 auto;
+  }
+
+  #input-area input[type="text"] {
+    width: 70%;
   }
 
   #hint-buttons {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 6px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #sojamaggus {
+    width: 140px;
   }
 
-  input[type="text"] {
-    width: 55%;
+  #input-area input[type="text"] {
+    width: 60%;
   }
 
-  button {
-    margin-left: 4px;
-    padding: 6px 12px;
+  .bubble {
+    padding: 8px 10px;
+    font-size: 13px;
   }
 }
