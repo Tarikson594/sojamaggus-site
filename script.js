@@ -179,8 +179,8 @@ function animateMouth() {
 
 // Buttons-Events
 document.addEventListener("DOMContentLoaded", () => {
+  // Inspiration-Bubbles unten
   const bubbles = document.querySelectorAll("#hint-buttons .bubble");
-
   bubbles.forEach((b) => {
     b.addEventListener("click", () => {
       userInput.value = b.textContent.toLowerCase();
