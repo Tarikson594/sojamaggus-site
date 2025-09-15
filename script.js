@@ -5,28 +5,22 @@ const userInput = document.getElementById("userInput");
 // Kategorien mit Antworten
 const responses = {
   fleisch: [
+    "Tofütümmelei<Leberkäsloser",
+    "Söder ist im Landtag häufiger abwesend als Fleisch auf meinem Teller",
+    "Söder & Aiwanger = Bayrische gemischtes Hack",
+    "Die einzige Möglichkeit den selbstverliebten Söder zum Veganismus zu bekommen ist Gesichtstofu",
+    "Wer von Tofuterror spricht hat vielleicht auch BSE Langzeitschäden",
+    "Wann endlich FSK18 label für #söderisst",
     "Mehr Tofu, weniger Leberkäs!",
     "Ein Braten aus Seitan ist auch ein Festschmaus.",
-    "Fleisch ist für mich nur Pflanzeneiweiß mit Umweg.",
+    "Fleisch ist für mich nur Eiweiß mit Umweg.",
     "Fleisch ist nur Gemüse, das den falschen Weg gegangen ist.",
-    "Ein Schnitzel? Lieber ein Sojaschnitzel!",
-    "Ein Burger aus Bohnen ist besser als jedes Steak.",
-    "Keine Angst vor Tempeh – das schmeckt sogar Söder!",
-    "Fleischersatz macht Bayern grüner.",
-    "Linsen statt Leberkäs – gesünder für alle!",
-    "Die Kühe danken es uns, wenn wir Tofu essen!"
+    "Ich bin gegen ein Tempehlimit!- Achso Tempo?! - Na dann bin ich dafür",
   ],
   windräder: [
     "Drehen sich schneller als Söders Meinung!",
     "Mehr Windräder, weniger heiße Luft.",
-    "Windkraft ist die echte bayerische Blasmusik.",
-    "Jeder braucht eine Windmühle auf dem Balkon!",
-    "Windräder + Tofu = Glückseligkeit",
-    "Windkraft rettet die Welt – und macht Bayern cool!",
-    "Drehen, drehen, drehen – aber nachhaltig!",
-    "Mehr Rotorblätter, weniger Bürokratie!",
-    "Windenergie ist der neue Weißwurst-Turbo.",
-    "Ein Windrad pro Haushalt – meine Vision!"
+    "Windkraft ist besser als bayerische Blasmusik...und macht weniger Lärm",
   ],
   bayern: [
     "Weißwurst mit Sojamilch – auch eine Tradition!",
@@ -45,18 +39,21 @@ const responses = {
     "Klimaschutz ist kein Schmarrn!",
     "Ein Grad mehr ist einer zu viel.",
     "Lieber Eis am Stiel als Eis am Pol, das wegschmilzt!",
-    "CO2 ist der wahre Bierzelt-Sprenger."
+    "CO2 ist der wahre Bierzelt-Sprenger.",
+    "Wir wollen weniger Vebrenner subventionieren, weil München sonst irgendwann am Meer tut liegen",
+    "Erst wenn die letzte Kuh gemolken, das letzte Schwein geschlachtet und die günstigste Maß 50,49€ kostet, werdet ihr lernen, dass wir unser Klime schützen müssen",
+    "Seitdem der Söder Bäume umarmt ist Naturschutz wichtiger denn je"
   ],
-  parteien: [
-    "Parteien reden viel, ich rede Tofu.",
-    "Politik ohne Klima ist wie Brezn ohne Salz.",
-    "Die CSU schwört auf Schweinsbraten – ich auf Sojaschnetzel.",
-    "Parteien drehen sich – fast wie Windräder, nur ohne Strom.",
-    "Parteien sind wie Weißwürste: nach 12 Uhr schwer verdaulich."
+  Raumfahrt: [
+    "Wie kann jemand ins All wollen wenn ihn schon Sternchen triggern.",
+    "Ein Sternchenverbot ist schon gewagt für jemanden der unbedingt ins All will",
+    "CSU-Raumfahrtprogramm: erst a Grill auf die ISS, dann a Sau",
+    "Wem eine eigene Raumfahrt wichtiger ist als die Behebung der Stellwerkstörung kann nicht so bürgernah sein ",
+    "„Die Grünen woll’n Verbote. Mir in Bayern ham a besseres Konzept: mir ham Tradition – die verbietet eh alles Neue."
   ],
   frauen: [
     "Frauen an die Macht – Männer an den Herd (mit Tofu).",
-    "Gleichberechtigung ist kein Beilagensalat.",
+    "Was macht ein CSU Politiker wenn ihn die Frauenquote gefährdet? Er nimmt ihnen den Unterleib weg",
     "Starke Frauen, starke Klimapolitik.",
     "Frauenpower rettet die Welt, Männer reden drüber.",
     "Ohne Frauen kein Fortschritt – auch kein veganer!"
@@ -192,3 +189,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const talkButton = document.querySelector("#input-area button");
   talkButton.addEventListener("click", talk);
 });
+
